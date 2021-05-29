@@ -232,7 +232,7 @@ def vtnAdministracion():
     tkinter.Label(vtnAdmin, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=270)
     tkinter.Label(vtnAdmin, text="Este apartado es el de la administación\ntoca un boton deacuerdo a lo que desea hacer." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=290,y=370)
     tkinter.Label(vtnAdmin, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=280,y=367)
-    btnAtras=tkinter.Button(vtnAdmin, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command= lambda:atras(vtnAdmin,vtnAcceso(vtnPrincipal))).place(x=20,y=350)
+    btnAtras=tkinter.Button(vtnAdmin, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command= lambda:ventanaPrincipal()).place(x=20,y=350)
 
     vtnAdmin.mainloop()
 #___________________________________________________________________________________#
@@ -256,7 +256,7 @@ def gestionEmpresa():
     btnEliminare=tkinter.Button(vtnge, text="Eliminar Empresa  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=eliminarEmpresa).place(x=10,y=120)
     btnModificare=tkinter.Button(vtnge, text="Modificar Empresa", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command= modificarEmpresa).place(x=10,y=160)
     btnMostare=tkinter.Button(vtnge, text="Mostar Empresas  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=200)
-    btnAtrase=tkinter.Button(vtnge, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=vtnAdministracion).place(x=20,y=350)
+    btnAtrase=tkinter.Button(vtnge, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=lambda:vtnAdministracion()).place(x=20,y=350)
     tkinter.Label(vtnge, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnge, text="En esta ventana estan todas las opciones de \ngestion de empresas toca un boton deacuerdo a lo que desea hacer." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=200,y=370)
     tkinter.Label(vtnge, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
@@ -284,7 +284,7 @@ def añadirEmpresa():
     ubicacione=tkinter.Entry(vtnae,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
     ubicacione.place(x=145,y=129)
     tkinter.Button(vtnae,text="AGREGAR EMPRESA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda:añadirEmpresaptxt(cedulae.get(),nombree.get(),ubicacione.get())).place(x=145,y=180)
-    tkinter.Button(vtnae,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=190,y=215)
+    tkinter.Button(vtnae,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionEmpresa()).place(x=190,y=215)
     tkinter.Label(vtnae, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnae, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
     tkinter.Label(vtnae, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
@@ -326,7 +326,7 @@ def eliminarEmpresa():
     cedulae=tkinter.Entry(vtnee,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
     cedulae.place(x=145,y=130)
     tkinter.Button(vtnee,text="ELIMINAR EMPRESA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Red", command= lambda:eliminarEmpresaptxt(cedulae.get())).place(x=145,y=180)
-    tkinter.Button(vtnee,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=190,y=215)
+    tkinter.Button(vtnee,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black",command=lambda:gestionEmpresa()).place(x=190,y=215)
     tkinter.Label(vtnee, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnee, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
     tkinter.Label(vtnee, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
@@ -367,7 +367,7 @@ def modificarEmpresa():
     cedulaem.place(x=145,y=130)
     botonm=tkinter.Button(vtnme,text="MODIFICAR EMPRESA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda:modificarEmpresatxt(cedulaem.get()))
     botonm.place(x=145,y=180)
-    tkinter.Button(vtnme,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=190,y=215)
+    tkinter.Button(vtnme,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black",command=lambda:gestionEmpresa()).place(x=190,y=215)
     tkinter.Label(vtnme, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnme, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
     tkinter.Label(vtnme, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
@@ -465,9 +465,9 @@ def gestionTransporte():
     tkinter.Label(vtnT, text="Precione lo que desea realizar en este menú:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
     btnAñadirt=tkinter.Button(vtnT, text="Añadir Transporte     ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command= lambda: añadirTransporte()).place(x=10,y=80)
     btnEliminart=tkinter.Button(vtnT, text="Eliminar Transporte  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command= lambda:eliminarTransporte()).place(x=10,y=120)
-    btnModificart=tkinter.Button(vtnT, text="Modificar Transporte", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=160)
+    btnModificart=tkinter.Button(vtnT, text="Modificar Transporte", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=lambda:modificarTransporte()).place(x=10,y=160)
     btnMostart=tkinter.Button(vtnT, text="Mostar Transporte  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=200)
-    btnAtrast=tkinter.Button(vtnT, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=vtnAdministracion).place(x=20,y=350)
+    btnAtrast=tkinter.Button(vtnT, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=lambda:vtnAdministracion()).place(x=20,y=350)
     tkinter.Label(vtnT, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnT, text="En esta ventana estan todas las opciones de \ngestion de transporte toca un boton deacuerdo a lo que desea hacer." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=200,y=370)
     tkinter.Label(vtnT, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
@@ -485,7 +485,7 @@ def añadirTransporte():
     tkinter.Button(vtnat,text="BUSETA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="black", command= lambda:añadirBuseta()).place(x=300,y=170)
     tkinter.Button(vtnat,text="LIMOSINA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="black", command= lambda:añadirLimosina()).place(x=80,y=170)
     tkinter.Label(vtnat, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
-    tkinter.Button(vtnat,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=200,y=290)
+    tkinter.Button(vtnat,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=200,y=290)
     tkinter.Label(vtnat, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
     tkinter.Label(vtnat, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
     vtnat.mainloop()
@@ -532,12 +532,13 @@ def añadirBuseta():
     empresab.place(x=145,y=280)
 
     tkinter.Button(vtnab,text="AGREGAR BUSETA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: añadirBusetatxt(placab.get(),tipob.get(),marcab.get(),modelob.get(),añob.get(),empresab.get())).place(x=155,y=370)
-    tkinter.Button(vtnab,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=190,y=400)
+    tkinter.Button(vtnab,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirTransporte()).place(x=190,y=400)
     tkinter.Label(vtnab, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=450)
     tkinter.Label(vtnab, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=510)
     tkinter.Label(vtnab, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=507)  
     vtnab.mainloop()
-    
+
+#------------------------------------------------------------------------------------
 def añadirBusetatxt(placa,tipo,marca,modelo,año,empresa):
     if(placa!="" and tipo!="" and marca!="" and modelo!="" and año!="" and empresa!=""):
         if(validarPla(placa,"")):
@@ -583,7 +584,7 @@ def camposBuseta():
     economico.place(x=100,y=240)
 
     tkinter.Button(vtncb,text="AGREGAR ASIENTOS",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: añadirBusetatxt2(vip.get(),normal.get(),economico.get())).place(x=155,y=370)
-    tkinter.Button(vtncb,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=190,y=400)
+    tkinter.Button(vtncb,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirBuseta()).place(x=190,y=400)
     vtncb.mainloop()
 
 def añadirBusetatxt2(vip,normal,economico):
@@ -596,8 +597,118 @@ def añadirBusetatxt2(vip,normal,economico):
         messagebox.showinfo(title = "Transporte agregado", message = "El transporte se agregó con exito")
     else:
         messagebox.showerror(title = "Error de contenido", message = "Para agregar un Transporte debe llenar los espacios")
+#----------------------------------------------------------------------------------------------------------------------------------------
+def añadirLimosina():
+    vtnal=tkinter.Tk()
+    vtnal.title("Agregando Transporte")
+    vtnal.geometry("500x550")
+    vtnal.resizable(False,False)
+    vtnal.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnal, text="۝   AGREGANDO LIMUSIA   ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnal, text="Registre la limusina llenando los campos:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblplacal=tkinter.Label(vtnal,text="Placa:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblplacal.place(x=5,y=80)
+    placal=tkinter.Entry(vtnal,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    placal.place(x=145,y=80)
+
+    lbltipol=tkinter.Label(vtnal,text="Tipo:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lbltipol.place(x=5,y=120)
+    tipol=tkinter.Entry(vtnal,text="Limusina",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    tipol.place(x=145,y=120)
+
+    lblmarcal=tkinter.Label(vtnal,text="Marca:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblmarcal.place(x=5,y=160)
+    marcal=tkinter.Entry(vtnal,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    marcal.place(x=145,y=160)
+
+    lblmodelol=tkinter.Label(vtnal,text="Modelo:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblmodelol.place(x=5,y=200)
+    modelol=tkinter.Entry(vtnal,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    modelol.place(x=145,y=200)
+
+    lblañol=tkinter.Label(vtnal,text="Año:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblañol.place(x=5,y=240)
+    añol=tkinter.Entry(vtnal,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    añol.place(x=145,y=240)
+
+    lblempresal=tkinter.Label(vtnal,text="Empresa:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblempresal.place(x=5,y=280)
+    lblempresall=tkinter.Label(vtnal,text="-Debe ser una empresa existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=315,y=165)
+    empresal=tkinter.Entry(vtnal,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    empresal.place(x=145,y=280)
+
+    tkinter.Button(vtnal,text="AGREGAR LIMUSINA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: añadirLimusinatxt(placal.get(),tipol.get(),marcal.get(),modelol.get(),añol.get(),empresal.get())).place(x=155,y=370)
+    tkinter.Button(vtnal,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirTransporte()).place(x=190,y=400)
+    tkinter.Label(vtnal, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=450)
+    tkinter.Label(vtnal, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=510)
+    tkinter.Label(vtnal, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=507)  
+    vtnal.mainloop()
+    
+#
+
+def añadirLimusinatxt(placa,tipo,marca,modelo,año,empresa):
+    if(placa!="" and tipo!="" and marca!="" and modelo!="" and año!="" and empresa!=""):
+        if(validarPla(placa,"")):
+            messagebox.showerror(title = "Error de la Placa", message = "Esta placa ya está registrada")
+        else:
+            Transportes=open("Transportes.txt","a")
+            Transportes.write("Placa:"+placa+"\n")
+            Transportes.write("Tipo:"+tipo+"\n")
+            Transportes.write("Marca:"+marca+"\n")
+            Transportes.write("Modelo:"+modelo+"\n")
+            Transportes.write("Año:"+año+"\n")
+            Transportes.write("Empresa:"+empresa+"\n")
+            Transportes.close()
+            return camposLimusina()
+
+    else:
+        messagebox.showerror(title = "Error de contenido", message = "Para agregar un Transporte debe llenar los espacios")
+
+def camposLimusina():
+    vtncl=tkinter.Tk()
+    vtncl.geometry("600x600")
+    vtncl.title("Gestion de Transporte")
+    vtncl.config(bg="SteelBlue3", cursor="hand2")
+    vtncl.resizable(False,False )
+        
+    tkinter.Label(vtncl, text="۝  CANTIDAD DE ASIENTOS  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtncl, text="Estos son los ascientos disponibles\nColor verde = Asientos VIP\nColor amarillo = Asientos Normal\nColor azul = Asiento Economicos\nSegún su categoría elija " , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+    lblasiento= tkinter.Label(vtncl, text="Estos son los ascientos disponibles\nColor verde = Asientos VIP\nColor amarillo = Asientos Normal\nColor azul = Asiento Economicos\nSegún su categoría escriba los que desee" , font=("Times New Roman",12),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblvip=tkinter.Label(vtncl,text="VIP:",font=("Angency FB",10), bg="SteelBlue3", fg="Black")
+    lblvip.place(x=5,y=160)
+    vip=tkinter.Entry(vtncl,text="", font=("Agency FB",10), bg="SkyBlue1", fg="Black")
+    vip.place(x=100,y=160)
+
+    lblnormal=tkinter.Label(vtncl,text="Normal:",font=("Angency FB",10), bg="SteelBlue3",fg="Black")
+    lblnormal.place(x=5,y=200)
+    normal=tkinter.Entry(vtncl,text="",font=("Agency FB",10), bg="SkyBlue1",fg="Black")
+    normal.place(x=100,y=200)
+
+    lbleconomico=tkinter.Label(vtncl,text="Economico:",font=("Angency FB",10), bg="SteelBlue3",fg="Black")
+    lbleconomico.place(x=5,y=240)
+    economico=tkinter.Entry(vtncl,text="",font=("Agency FB",10), bg="SkyBlue1",fg="Black")
+    economico.place(x=100,y=240)
+
+    tkinter.Button(vtncl,text="AGREGAR ASIENTOS",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: añadirLimusinatxt2(vip.get(),normal.get(),economico.get())).place(x=155,y=370)
+    tkinter.Button(vtncl,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirBuseta()).place(x=190,y=400)
+    vtncl.mainloop()
+
+def añadirLimusinatxt2(vip,normal,economico):
+    if(vip!="" and normal!="" and economico!=""):    
+        Transportes=open("Transportes.txt","a")
+        Transportes.write("VIP:"+vip+"\n")
+        Transportes.write("Normal:"+normal+"\n")
+        Transportes.write("Economico:"+economico+"\n")
+        Transportes.write("--------------------------------------" + "\n")
+        messagebox.showinfo(title = "Transporte agregado", message = "El transporte se agregó con exito")
+    else:
+        messagebox.showerror(title = "Error de contenido", message = "Para agregar un Transporte debe llenar los espacios")
+#----------------------------------------------------------------------------------------------------------------------------------------
 
 
+#-----------------------------------------------------------------------------------  
 #Eliminar Transportes
 def eliminarTransporte():
     vtnet=tkinter.Tk()
@@ -612,7 +723,7 @@ def eliminarTransporte():
     placat=tkinter.Entry(vtnet,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
     placat.place(x=145,y=130)
     tkinter.Button(vtnet,text="ELIMINAR TRANSPORTE",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Red", command= lambda:eliminarTransportetxt(placat.get())).place(x=145,y=180)
-    tkinter.Button(vtnet,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black").place(x=190,y=215)
+    tkinter.Button(vtnet,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=190,y=215)
     tkinter.Label(vtnet, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnet, text="En esta ventana puedes eliminar tu transporte \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
     tkinter.Label(vtnet, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
@@ -635,8 +746,314 @@ def eliminarTransportetxt(placa):
     else:
         messagebox.showerror(title = "Eliminar Transportes", message = "No se encuentra ninguna placa registrada con "+placa)
 
+#-----------ModificarT------------------------------------------------------------------------------------------------------------------
+def modificarTransporte():
+    vtnmt=tkinter.Tk()
+    vtnmt.title("Modificando Transporte")
+    vtnmt.geometry("500x400")
+    vtnmt.resizable(False,False)
+    vtnmt.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmt, text="۝   MODIFICAR TRANSPORTE   ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmt, text="Este apartado es para modificar un transporte registrado al sistema\nSolo son permitidos dos tipos de vehículos\nPor favor elija el tipo de vehiculo que desea modificar" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=25,y=60)
+    tkinter.Button(vtnmt,text="MODIFICAR BUSETA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="black", command= lambda:modificarTB()).place(x=300,y=170)
+    tkinter.Button(vtnmt,text="MODIFICAR LIMOSINA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="black", command= lambda:modificarTL()).place(x=80,y=170)
+    tkinter.Label(vtnmt, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
+    tkinter.Button(vtnmt,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=240,y=290)
+    tkinter.Label(vtnmt, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
+    tkinter.Label(vtnmt, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
+    vtnmt.mainloop()
+#
+#AQUI
+def modificarTB():
+    vtnmtt=tkinter.Tk()
+    vtnmtt.title("Modificar Empresa")
+    vtnmtt.geometry("500x400")
+    vtnmtt.resizable(False,False)
+    vtnmtt.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmtt, text="۝  MODIFICAR TRANSPORTE  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmtt, text="Este apartado es para modificar un transporte ya registrada\nPor favor ingrese en el siguiente apartado la placa respectiva al\n transporte" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=25,y=60)
+    lblPlaca=tkinter.Label(vtnmtt,text="Placa:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblPlaca.place(x=5,y=130)
+    placatm=tkinter.Entry(vtnmtt,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    placatm.place(x=145,y=130)
+    botonm=tkinter.Button(vtnmtt,text="MODIFICAR EMPRESA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda:modificarTransportetxt(placatm.get()))
+    botonm.place(x=145,y=180)
+    tkinter.Button(vtnmtt,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black",command=lambda:gestionTransporte()).place(x=190,y=215)
+    tkinter.Label(vtnmtt, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
+    tkinter.Label(vtnmtt, text="En esta ventana puedes agregar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
+    tkinter.Label(vtnmtt, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
+    
+    vtnmtt.mainloop()
+
+#Verifica si se encuentra
+def modificarTransportetxt(placa):
+    Transportes = open("Transportes.txt")
+    listaTransportes = Transportes.readlines()
+    if(seEncuentra(placa+"\n",listaTransportes)):
+        placa=str(placa)
+        indice = listaTransportes.index("Placa:"+placa+"\n")
+        placa = eliminarInformacion_aux(listaTransportes, indice, 0)
+        Transportes.close()
+        Transportes = open("Transportes.txt", "w")
+        Transportes.write(placa)
+        Transportes.close()
+        return modificarTransporte2()
+    else:
+        messagebox.showerror(title = "Eliminar Transporte", message = "No se encuentra ninguna placa registrada con "+placa)
+        
+
+def modificarTransporte2():
+    vtnmb=tkinter.Tk()
+    vtnmb.title("Modifiacando Transporte")
+    vtnmb.geometry("500x550")
+    vtnmb.resizable(False,False)
+    vtnmb.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmb, text="۝   MODIFICANDO BUSETA   ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmb, text="Modifique la buseta llenando los campos:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblplacabm=tkinter.Label(vtnmb,text="Nueva Placa:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblplacabm.place(x=5,y=80)
+    placabm=tkinter.Entry(vtnmb,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    placabm.place(x=145,y=80)
+
+    lbltipobm=tkinter.Label(vtnmb,text="Nueva Tipo:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lbltipobm.place(x=5,y=120)
+    tipobm=tkinter.Entry(vtnmb,text="Buseta",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    tipobm.place(x=145,y=120)
+
+    lblmarcabm=tkinter.Label(vtnmb,text="Nueva Marca:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblmarcabm.place(x=5,y=160)
+    marcabm=tkinter.Entry(vtnmb,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    marcabm.place(x=145,y=160)
+
+    lblmodelobm=tkinter.Label(vtnmb,text="Nuevo Modelo:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblmodelobm.place(x=5,y=200)
+    modelobm=tkinter.Entry(vtnmb,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    modelobm.place(x=145,y=200)
+
+    lblañobm=tkinter.Label(vtnmb,text="Nuevo Año:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblañobm.place(x=5,y=240)
+    añobm=tkinter.Entry(vtnmb,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    añobm.place(x=145,y=240)
+
+    lblempresabm=tkinter.Label(vtnmb,text="Nueva Empresa:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblempresabm.place(x=5,y=280)
+    lblempresabbm=tkinter.Label(vtnmb,text="-Debe ser una empresa existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=315,y=165)
+    empresabm=tkinter.Entry(vtnmb,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    empresabm.place(x=145,y=280)
+
+    tkinter.Button(vtnmb,text="MODIFICAR BUSETA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: modificarBusetatxt(placabm.get(),tipobm.get(),marcabm.get(),modelobm.get(),añobm.get(),empresabm.get())).place(x=155,y=370)
+    tkinter.Button(vtnmb,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=190,y=400)
+    tkinter.Label(vtnmb, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=450)
+    tkinter.Label(vtnmb, text="En esta ventana puedes modificar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=510)
+    tkinter.Label(vtnmb, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=507)  
+    vtnmb.mainloop()
 
 
+def modificarBusetatxt(placa,tipo,marca,modelo,año,empresa):
+    if(placa!="" and tipo!="" and marca!="" and modelo!="" and año!="" and empresa!=""):
+        if(validarPla(placa,"")):
+            messagebox.showerror(title = "Error de la Placa", message = "Esta placa ya está registrada")
+        else:
+            Transportes=open("Transportes.txt","a")
+            Transportes.write("Placa:"+placa+"\n")
+            Transportes.write("Tipo:"+tipo+"\n")
+            Transportes.write("Marca:"+marca+"\n")
+            Transportes.write("Modelo:"+modelo+"\n")
+            Transportes.write("Año:"+año+"\n")
+            Transportes.write("Empresa:"+empresa+"\n")
+            Transportes.close()
+            return camposBusetam()
+    
+def camposBusetam():
+    vtncbm=tkinter.Tk()
+    vtncbm.geometry("600x600")
+    vtncbm.title("Gestion de Transporte")
+    vtncbm.config(bg="SteelBlue3", cursor="hand2")
+    vtncbm.resizable(False,False )
+        
+    tkinter.Label(vtncbm, text="۝  CANTIDAD DE ASIENTOS  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtncbm, text="Estos son los ascientos disponibles\nColor verde = Asientos VIP\nColor amarillo = Asientos Normal\nColor azul = Asiento Economicos\nSegún su categoría elija " , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+    lblasientom= tkinter.Label(vtncbm, text="Estos son los ascientos disponibles\nColor verde = Asientos VIP\nColor amarillo = Asientos Normal\nColor azul = Asiento Economicos\nSegún su categoría escriba los que desee" , font=("Times New Roman",12),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblvipm=tkinter.Label(vtncbm,text="VIP:",font=("Angency FB",10), bg="SteelBlue3", fg="Black")
+    lblvipm.place(x=5,y=160)
+    vipm=tkinter.Entry(vtncbm,text="", font=("Agency FB",10), bg="SkyBlue1", fg="Black")
+    vipm.place(x=100,y=160)
+
+    lblnormalm=tkinter.Label(vtncbm,text="Normal:",font=("Angency FB",10), bg="SteelBlue3",fg="Black")
+    lblnormalm.place(x=5,y=200)
+    normalm=tkinter.Entry(vtncbm,text="",font=("Agency FB",10), bg="SkyBlue1",fg="Black")
+    normalm.place(x=100,y=200)
+
+    lbleconomicom=tkinter.Label(vtncbm,text="Economico:",font=("Angency FB",10), bg="SteelBlue3",fg="Black")
+    lbleconomicom.place(x=5,y=240)
+    economicom=tkinter.Entry(vtncbm,text="",font=("Agency FB",10), bg="SkyBlue1",fg="Black")
+    economicom.place(x=100,y=240)
+
+    tkinter.Button(vtncbm,text="AGREGAR ASIENTOS",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: modificarBusetatxt2(vipm.get(),normalm.get(),economicom.get())).place(x=155,y=370)
+    tkinter.Button(vtncbm,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirBuseta()).place(x=190,y=400)
+    vtncbm.mainloop()
+
+def modificarBusetatxt2(vip,normal,economico):
+    if(vip!="" and normal!="" and economico!=""):    
+        Transportes=open("Transportes.txt","a")
+        Transportes.write("VIP:"+vip+"\n")
+        Transportes.write("Normal:"+normal+"\n")
+        Transportes.write("Economico:"+economico+"\n")
+        Transportes.write("--------------------------------------" + "\n")
+        messagebox.showinfo(title = "Transporte agregado", message = "El transporte se agregó con exito")
+    else:
+        messagebox.showerror(title = "Error de contenido", message = "Para agregar un Transporte debe llenar los espacios")
+
+
+#------------------
+def modificarTL():
+    vtnmttl=tkinter.Tk()
+    vtnmttl.title("Modificar Empresa")
+    vtnmttl.geometry("500x400")
+    vtnmttl.resizable(False,False)
+    vtnmttl.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmttl, text="۝  MODIFICAR TRANSPORTE  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmttl, text="Este apartado es para modificar un transporte ya registrada\nPor favor ingrese en el siguiente apartado la placa respectiva al\n transporte" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=25,y=60)
+    lblPlacal=tkinter.Label(vtnmttl,text="Placa:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblPlacal.place(x=5,y=130)
+    placatml=tkinter.Entry(vtnmttl,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    placatml.place(x=145,y=130)
+    botonml=tkinter.Button(vtnmttl,text="MODIFICAR LIMUSINA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda:modificarTransportetxtl(placatml.get()))
+    botonml.place(x=145,y=180)
+    tkinter.Button(vtnmttl,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black",command=lambda:gestionTransporte()).place(x=190,y=215)
+    tkinter.Label(vtnmttl, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
+    tkinter.Label(vtnmttl, text="En esta ventana puedes modificar tu limusina \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
+    tkinter.Label(vtnmttl, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
+    
+    vtnmttl.mainloop()
+
+#Verifica si se encuentra
+def modificarTransportetxtl(placa):
+    Transportes = open("Transportes.txt")
+    listaTransportes = Transportes.readlines()
+    if(seEncuentra(placa+"\n",listaTransportes)):
+        placa=str(placa)
+        indice = listaTransportes.index("Placa:"+placa+"\n")
+        placa = eliminarInformacion_aux(listaTransportes, indice, 0)
+        Transportes.close()
+        Transportes = open("Transportes.txt", "w")
+        Transportes.write(placa)
+        Transportes.close()
+        return modificarTransporte2l()
+    else:
+        messagebox.showerror(title = "Eliminar Transporte", message = "No se encuentra ninguna placa registrada con "+placa)
+        
+
+def modificarTransporte2l():
+    vtnmbl=tkinter.Tk()
+    vtnmbl.title("Modifiacando Transporte")
+    vtnmbl.geometry("500x550")
+    vtnmbl.resizable(False,False)
+    vtnmbl.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmbl, text="۝   MODIFICANDO LIMUSINA   ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmbl, text="Modifique la limusina llenando los campos:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblplacabml=tkinter.Label(vtnmbl,text="Nueva Placa:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblplacabml.place(x=5,y=80)
+    placabml=tkinter.Entry(vtnmbl,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    placabml.place(x=145,y=80)
+
+    lbltipobml=tkinter.Label(vtnmbl,text="Nueva Tipo:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lbltipobml.place(x=5,y=120)
+    tipobml=tkinter.Entry(vtnmbl,text="Buseta",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    tipobml.place(x=145,y=120)
+
+    lblmarcabml=tkinter.Label(vtnmbl,text="Nueva Marca:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblmarcabml.place(x=5,y=160)
+    marcabml=tkinter.Entry(vtnmbl,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    marcabml.place(x=145,y=160)
+
+    lblmodelobml=tkinter.Label(vtnmbl,text="Nuevo Modelo:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblmodelobml.place(x=5,y=200)
+    modelobml=tkinter.Entry(vtnmbl,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    modelobml.place(x=145,y=200)
+
+    lblañobml=tkinter.Label(vtnmbl,text="Nuevo Año:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblañobml.place(x=5,y=240)
+    añobml=tkinter.Entry(vtnmbl,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    añobml.place(x=145,y=240)
+
+    lblempresabml=tkinter.Label(vtnmbl,text="Nueva Empresa:",font=("Angency FB",14), bg="SteelBlue3",fg="Black")
+    lblempresabml.place(x=5,y=280)
+    lblempresabbml=tkinter.Label(vtnmbl,text="-Debe ser una empresa existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=315,y=165)
+    empresabml=tkinter.Entry(vtnmbl,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    empresabml.place(x=145,y=280)
+
+    tkinter.Button(vtnmbl,text="MODIFICAR LIMUSINA",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: modificarBusetatxtl(placabml.get(),tipobml.get(),marcabml.get(),modelobml.get(),añobml.get(),empresabml.get())).place(x=155,y=370)
+    tkinter.Button(vtnmbl,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=190,y=400)
+    tkinter.Label(vtnmbl, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=450)
+    tkinter.Label(vtnmbl, text="En esta ventana puedes modificar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=510)
+    tkinter.Label(vtnmbl, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=507)  
+    vtnmbl.mainloop()
+
+
+def modificarBusetatxtl(placa,tipo,marca,modelo,año,empresa):
+    if(placa!="" and tipo!="" and marca!="" and modelo!="" and año!="" and empresa!=""):
+        if(validarPla(placa,"")):
+            messagebox.showerror(title = "Error de la Placa", message = "Esta placa ya está registrada")
+        else:
+            Transportes=open("Transportes.txt","a")
+            Transportes.write("Placa:"+placa+"\n")
+            Transportes.write("Tipo:"+tipo+"\n")
+            Transportes.write("Marca:"+marca+"\n")
+            Transportes.write("Modelo:"+modelo+"\n")
+            Transportes.write("Año:"+año+"\n")
+            Transportes.write("Empresa:"+empresa+"\n")
+            Transportes.close()
+            return camposLimusinam()
+    
+def camposLimusinam():
+    vtnclm=tkinter.Tk()
+    vtnclm.geometry("600x600")
+    vtnclm.title("Gestion de Transporte")
+    vtnclm.config(bg="SteelBlue3", cursor="hand2")
+    vtnclm.resizable(False,False )
+        
+    tkinter.Label(vtnclm, text="۝  CANTIDAD DE ASIENTOS  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnclm, text="Estos son los ascientos disponibles\nColor verde = Asientos VIP\nColor amarillo = Asientos Normal\nColor azul = Asiento Economicos\nSegún su categoría elija " , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+    lblasientoml= tkinter.Label(vtnclm, text="Estos son los ascientos disponibles\nColor verde = Asientos VIP\nColor amarillo = Asientos Normal\nColor azul = Asiento Economicos\nSegún su categoría escriba los que desee" , font=("Times New Roman",12),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblvipml=tkinter.Label(vtnclm,text="VIP:",font=("Angency FB",10), bg="SteelBlue3", fg="Black")
+    lblvipml.place(x=5,y=160)
+    vipml=tkinter.Entry(vtnclm,text="", font=("Agency FB",10), bg="SkyBlue1", fg="Black")
+    vipml.place(x=100,y=160)
+
+    lblnormalml=tkinter.Label(vtnclm,text="Normal:",font=("Angency FB",10), bg="SteelBlue3",fg="Black")
+    lblnormalml.place(x=5,y=200)
+    normalml=tkinter.Entry(vtnclm,text="",font=("Agency FB",10), bg="SkyBlue1",fg="Black")
+    normalml.place(x=100,y=200)
+
+    lbleconomicoml=tkinter.Label(vtnclm,text="Economico:",font=("Angency FB",10), bg="SteelBlue3",fg="Black")
+    lbleconomicoml.place(x=5,y=240)
+    economicoml=tkinter.Entry(vtnclm,text="",font=("Agency FB",10), bg="SkyBlue1",fg="Black")
+    economicoml.place(x=100,y=240)
+
+    tkinter.Button(vtnclm,text="AGREGAR ASIENTOS",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: modificarBusetatxt2l(vipml.get(),normalml.get(),economicoml.get())).place(x=155,y=370)
+    tkinter.Button(vtnclm,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirLimusina()).place(x=190,y=400)
+    vtnclm.mainloop()
+
+def modificarBusetatxt2l(vip,normal,economico):
+    if(vip!="" and normal!="" and economico!=""):    
+        Transportes=open("Transportes.txt","a")
+        Transportes.write("VIP:"+vip+"\n")
+        Transportes.write("Normal:"+normal+"\n")
+        Transportes.write("Economico:"+economico+"\n")
+        Transportes.write("--------------------------------------" + "\n")
+        messagebox.showinfo(title = "Transporte agregado", message = "El transporte se agregó con exito")
+    else:
+        messagebox.showerror(title = "Error de contenido", message = "Para agregar un Transporte debe llenar los espacios")
+
+
+
+#--------MostarT--------------------------------------------------------------------------------------------------------------------
+        
     
 #_________________________________________________________________________________________________________#
 """
