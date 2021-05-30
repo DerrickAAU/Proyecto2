@@ -114,6 +114,18 @@ def eliminarInformacion_aux(listaTransportes, indice, cont):
     else:
         listaTransportes.pop(indice)
         return eliminarInformacion_aux(listaTransportes, indice, cont + 1)
+
+#- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#Para eliminar la informacion de el archivo de Viajes
+def eliminarInformacion_aux1(listaViajes,indice,cont):
+    if cont==10:
+        return convertirstr(listaViajes)
+    else:
+        listaViajes.pop(indice)
+        return eliminarInformacion_aux1(listaViajes, indice, cont + 1)
+
+
+
      
 ##########################
 
@@ -943,7 +955,7 @@ def modificarTransportetxtl(placa):
         Transportes.close()
         return modificarTransporte2l()
     else:
-        messagebox.showerror(title = "Eliminar Transporte", message = "No se encuentra ninguna placa registrada con "+placa)
+        messagebox.showerror(title = "Modificar Transporte", message = "No se encuentra ninguna placa registrada con "+placa)
         
 
 def modificarTransporte2l():
@@ -1051,7 +1063,6 @@ def modificarBusetatxt2l(vip,normal,economico):
         messagebox.showerror(title = "Error de contenido", message = "Para agregar un Transporte debe llenar los espacios")
 
 
-
 #--------MostarT--------------------------------------------------------------------------------------------------------------------
         
     
@@ -1072,15 +1083,263 @@ def gestionViaje():
         
     tkinter.Label(vtnV, text="۝   GESTION DE VIAJE   ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
     tkinter.Label(vtnV, text="Precione lo que desea realizar en este menú:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
-    btnAñadirv=tkinter.Button(vtnV, text="Añadir Viaje    ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=80)
-    btnEliminarv=tkinter.Button(vtnV, text="Eliminar Viaje  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=120)
-    btnModificarv=tkinter.Button(vtnV, text="Modificar Viaje", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=160)
+    btnAñadirv=tkinter.Button(vtnV, text="Añadir Viaje    ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=lambda:añadirViaje()).place(x=10,y=80)
+    btnEliminarv=tkinter.Button(vtnV, text="Eliminar Viaje  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black",command=lambda:eliminarViaje()).place(x=10,y=120)
+    btnModificarv=tkinter.Button(vtnV, text="Modificar Viaje", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=lambda:modificarViaje()).place(x=10,y=160)
     btnMostarv=tkinter.Button(vtnV, text="Mostar Viaje  ", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black").place(x=10,y=200)
     btnAtrasv=tkinter.Button(vtnV, text="Atrás", fon=("Arial",12), bg="DeepSkyBlue4",fg="Black", command=vtnAdministracion).place(x=20,y=350)
     tkinter.Label(vtnV, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
     tkinter.Label(vtnV, text="En esta ventana estan todas las opciones de \ngestion de viaje toca un boton deacuerdo a lo que desea hacer." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=200,y=370)
     tkinter.Label(vtnV, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
     vtnV.mainloop()
+
+#--------Añadir  V-----------------------------------------------------------------------------------------------------------------------------
+def añadirViaje():
+    vtnav=tkinter.Tk()
+    vtnav.title("Agregando Viaje")
+    vtnav.geometry("550x550")
+    vtnav.resizable(False,False)
+    vtnav.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnav, text="۝   AGREGANDO VIAJE   ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnav, text="Registre el viaje llenando los campos:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblnumerov=tkinter.Label(vtnav,text="Numero de Viaje:\n",font=("Angency FB",12), bg="SteelBlue3", fg="Black")
+    lblnumerov.place(x=5,y=80)
+    numerov=tkinter.Entry(vtnav,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    numerov.place(x=180,y=80)
+
+    lblprovs=tkinter.Label(vtnav,text="Provincia,ciudad salida:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblprovs.place(x=5,y=120)
+    provs=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    provs.place(x=180,y=120)
+
+    lblfechasv=tkinter.Label(vtnav,text="Fecha de salida:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblfechasv.place(x=5,y=160)
+    fechasv=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    fechasv.place(x=180,y=160)
+
+    lblhorasv=tkinter.Label(vtnav,text="Hora de salida:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblhorasv.place(x=5,y=200)
+    horasv=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    horasv.place(x=180,y=200)
+
+    lblprovl=tkinter.Label(vtnav,text="Provincia,ciudad llegada:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblprovl.place(x=5,y=240)
+    provl=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    provl.place(x=180,y=240)
+
+    lblfechalv=tkinter.Label(vtnav,text="Fecha de llegada:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblfechalv.place(x=5,y=280)
+    fechalv=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    fechalv.place(x=180,y=280)
+
+    lblhorasv=tkinter.Label(vtnav,text="Hora de llegada:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblhorasv.place(x=5,y=320)
+    horasv=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    horasv.place(x=180,y=320)
+
+    lblempresav=tkinter.Label(vtnav,text="Empresa:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblempresav.place(x=5,y=360)
+    lblempresavv=tkinter.Label(vtnav,text="-Debe ser una empresa existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=350,y=165)
+    empresav=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    empresav.place(x=180,y=360)
+
+    lblempresatv=tkinter.Label(vtnav,text="Transporte:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblempresatv.place(x=5,y=400)
+    lblempresatv=tkinter.Label(vtnav,text="-Debe ser un transporte existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=350,y=405)
+    empresatv=tkinter.Entry(vtnav,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    empresatv.place(x=180,y=400)
+
+    tkinter.Button(vtnav,text="AGREGAR VIAJE",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: añadirViajetxt(numerov.get(),provs.get(),fechasv.get(),horasv.get(),provl.get(), fechalv.get(),horasv.get(),empresav.get(),empresatv.get())).place(x=185,y=433)
+    tkinter.Button(vtnav,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:añadirTransporte()).place(x=5,y=500)
+    tkinter.Label(vtnav, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=460)
+    tkinter.Label(vtnav, text="En esta ventana puedes agregar tu viaje \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=240,y=510)
+    tkinter.Label(vtnav, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=507)  
+    vtnav.mainloop()
+
+
+def añadirViajetxt(nv,provs,fechas,horas,provl,fechal,horal,empresa,transporte):
+    if(nv!="" and provs!="" and fechas!="" and horas!="" and provl!="" and fechal!="" and horal!="" and empresa!="" and transporte!=""):        
+        Viajes=open("Viajes.txt","a")
+        Viajes.write("Numero:"+nv+"\n")
+        Viajes.write("Provincia,ciudad salida:"+provs+"\n")
+        Viajes.write("Fecha salida:"+fechas+"\n")
+        Viajes.write("Hora salida:"+horas+"\n")
+        Viajes.write("Provincia,ciudad llegada:"+provl+"\n")
+        Viajes.write("Fecha llegada:"+fechal+"\n")
+        Viajes.write("Hora llegada:"+horal+"\n")
+        Viajes.write("Empresa:"+empresa+"\n")
+        Viajes.write("Transporte:"+transporte+"\n")
+        Viajes.write("--------------------------------------" + "\n")
+        Viajes.close()
+        messagebox.showinfo(title = "Viaje agregado", message = "El viaje se agregó con exito")
+    else:
+        messagebox.showerror(title = "Error de contenido", message = "Para agregar un viaje debe llenar los espacios")
+
+#-----------------------------------------------------------------------------------------------------------
+
+def eliminarViaje():
+    vtnev=tkinter.Tk()
+    vtnev.title("Borrando Transporte")
+    vtnev.geometry("500x400")
+    vtnev.resizable(False,False)
+    vtnev.config(bg="SteelBlue3", cursor="X_cursor")
+    tkinter.Label(vtnev, text="۝  ELIMINANDO VIAJE  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnev, text="Este apartado es para eliminar un Viaje ya registrada\nPor favor ingrese en el siguiente apartado el numero de viaje respectiva del\n viaje" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=25,y=60)
+    lblnumero=tkinter.Label(vtnev,text="Numero de viaje:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblnumero.place(x=5,y=130)
+    numv=tkinter.Entry(vtnev,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    numv.place(x=145,y=130)
+    tkinter.Button(vtnev,text="ELIMINAR VIAJE",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Red", command= lambda:eliminarViajetxt(numv.get())).place(x=145,y=180)
+    tkinter.Button(vtnev,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=190,y=215)
+    tkinter.Label(vtnev, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
+    tkinter.Label(vtnev, text="En esta ventana puedes eliminar tu transporte \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
+    tkinter.Label(vtnev, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
+    
+    vtnev.mainloop()
+
+
+def eliminarViajetxt(numv):
+    Viajes = open("Viajes.txt")
+    listaViajes = Viajes.readlines()
+    if(seEncuentra(numv+"\n",listaViajes)):
+        vumv=str(numv)
+        indice = listaViajes.index("Numero:"+numv+"\n")
+        numv = eliminarInformacion_aux1(listaViajes, indice, 0)
+        Viajes.close()
+        Viajes = open("Viajes.txt", "w")
+        Viajes.write(numv)
+        Viajes.close()
+        messagebox.showinfo(title = "Eliminar Viajes", message = "El Viajes ha sido borrada exitosamente ")
+
+    else:
+        messagebox.showerror(title = "Eliminar Viajes", message = "No se encuentra ningun numero registrado con "+numv)
+
+#MODIFICAR VIAJE--------------------------------------------------------------------------------------------------------------------------
+def modificarViaje():
+    vtnmv=tkinter.Tk()
+    vtnmv.title("Modificar Viaje")
+    vtnmv.geometry("500x400")
+    vtnmv.resizable(False,False)
+    vtnmv.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmv, text="۝  MODIFICAR VIAJE  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmv, text="Este apartado es para modificar un viaje ya registrada\nPor favor ingrese en el siguiente apartado el numero de viaje " , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=25,y=60)
+    lblnumv=tkinter.Label(vtnmv,text="Numero de viaje:\n",font=("Angency FB",14), bg="SteelBlue3", fg="Black")
+    lblnumv.place(x=5,y=130)
+    nummv=tkinter.Entry(vtnmv,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    nummv.place(x=145,y=130)
+    botonmv=tkinter.Button(vtnmv,text="MODIFICAR VIAJE",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda:modificarViajetxt(nummv.get()))
+    botonmv.place(x=145,y=180)
+    tkinter.Button(vtnmv,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black",command=lambda:gestionViaje()).place(x=190,y=215)
+    tkinter.Label(vtnmv, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=250)
+    tkinter.Label(vtnmv, text="En esta ventana puedes modificar tu limusina \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=370)
+    tkinter.Label(vtnmv, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=367)
+    
+    vtnmv.mainloop()
+
+
+
+
+def modificarViajetxt(nummv):
+    Viajes= open("Viajes.txt")
+    listaViajes = Viajes.readlines()
+    if(seEncuentra(nummv+"\n",listaViajes)):
+        nummv=str(nummv)
+        indice = listaViajes.index("Numero:"+nummv+"\n")
+        nummv = eliminarInformacion_aux1(listaViajes, indice, 0)
+        Viajes.close()
+        Viajes = open("Viajes.txt", "w")
+        Viajes.write(nummv)
+        Viajes.close()
+        return modificarViaje1()
+    else:
+        messagebox.showerror(title = "Modificar Viaje", message = "No se encuentra ningun viaje registrada con "+nummv)
+          
+
+def modificarViaje1():
+    vtnmvv=tkinter.Tk()
+    vtnmvv.title("Modifiacando Viaje")
+    vtnmvv.geometry("550x550")
+    vtnmvv.resizable(False,False)
+    vtnmvv.config(bg="SteelBlue3", cursor="plus")
+    tkinter.Label(vtnmvv, text="۝   MODIFICANDO VIAJE  ۝", font=("Times New Roman", 18),bg="RoyalBlue2" , fg="Black").pack(fill=tkinter.X)
+    tkinter.Label(vtnmvv, text="Modifique el vaije llenando los campos:" , font=("Times New Roman",13),bg="SteelBlue3",fg="blue4").place(x=1,y=40)
+
+    lblnumerom=tkinter.Label(vtnmvv,text="Nuevo numero:",font=("Angency FB",12), bg="SteelBlue3", fg="Black")
+    lblnumerom.place(x=5,y=70)
+    numerom=tkinter.Entry(vtnmvv,text="", font=("Agency FB",14), bg="SkyBlue1", fg="Black")
+    numerom.place(x=190,y=70)
+
+    lblprovsm=tkinter.Label(vtnmvv,text="Nueva Provincia,Ciudad salida:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblprovsm.place(x=5,y=110)
+    provsm=tkinter.Entry(vtnmvv,text="B",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    provsm.place(x=240,y=110)
+
+    lblfechasm=tkinter.Label(vtnmvv,text="Nueva Fecha Salida:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblfechasm.place(x=5,y=150)
+    fechasm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    fechasm.place(x=190,y=150)
+
+    lblhorasm=tkinter.Label(vtnmvv,text="Nuevo Hora salida:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblhorasm.place(x=5,y=190)
+    horasm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    horasm.place(x=190,y=190)
+
+    lblprovlm=tkinter.Label(vtnmvv,text="Nueva Provincia,Ciudad llegada:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblprovlm.place(x=5,y=230)
+    provlm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    provlm.place(x=240,y=230)
+
+    lblfechalm=tkinter.Label(vtnmvv,text="Nueva Fecha llegada:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblfechalm.place(x=5,y=270)
+    fechalm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    fechalm.place(x=200,y=270)
+
+    lblhoralm=tkinter.Label(vtnmvv,text="Nueva Hora llegada:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblhoralm.place(x=5,y=310)
+    horalm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    horalm.place(x=190,y=310)
+
+    lblempresablm=tkinter.Label(vtnmvv,text="Nueva Empresa:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lblempresablm.place(x=5,y=350)
+    lblempresabblm=tkinter.Label(vtnmvv,text="-Debe ser una empresa existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=355,y=350)
+    empresalm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    empresalm.place(x=190,y=350)
+
+    lbltransportelm=tkinter.Label(vtnmvv,text="Nuevo Transporte:",font=("Angency FB",12), bg="SteelBlue3",fg="Black")
+    lbltransportelm.place(x=5,y=390)
+    lbltransportebblm=tkinter.Label(vtnmvv,text="-Debe ser un transporte existente-",font=("Times New Roman",10), bg="SteelBlue3",fg="Black").place(x=355,y=390)
+    transportelm=tkinter.Entry(vtnmvv,text="",font=("Agency FB",14), bg="SkyBlue1",fg="Black")
+    transportelm.place(x=190,y=390)
+
+    tkinter.Button(vtnmvv,text="MODIFICAR VIAJE",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command= lambda: modificarViajetxt1(numerom.get(),provsm.get(),fechasm.get(),horasm.get(),provlm.get(),fechalm.get(),horalm.get(),empresalm.get(),transportelm.get())).place(x=210,y=423)
+    tkinter.Button(vtnmvv,text="SALIR",font=("Angency FB",10),bg="DeepSkyBlue4",fg="Black", command=lambda:gestionTransporte()).place(x=10,y=485)
+    tkinter.Label(vtnmvv, text=" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" , font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=5,y=450)
+    tkinter.Label(vtnmvv, text="En esta ventana puedes modificar tu empresa \ndebes llenar los campos de entrada con lo solicitado." , font=("Arial",7),bg="SteelBlue3",fg="Black").place(x=225,y=510)
+    tkinter.Label(vtnmvv, text="?" , font=("Arial Black",8),bg="SteelBlue3",fg="Black").place(x=230,y=507)  
+    vtnmvv.mainloop()
+
+#-
+def modificarViajetxt1(numero,provs,fechas,horas,provl,fechal,horal,empresa,transporte):
+    if(numero!="" and provs!="" and fechas!="" and horas!="" and provl!="" and fechal!="" and horal!="" and empresa!="" and transporte!=""):        
+        Viajes=open("Viajes.txt","a")
+        Viajes.write("Numero:"+numero+"\n")
+        Viajes.write("Provincia,ciudad salida:"+provs+"\n")
+        Viajes.write("Fecha salida:"+fechas+"\n")
+        Viajes.write("Hora salida:"+horas+"\n")
+        Viajes.write("Provincia,ciudad llegada:"+provl+"\n")
+        Viajes.write("Fecha llegada:"+fechal+"\n")
+        Viajes.write("Hora llegada:"+horal+"\n")
+        Viajes.write("Empresa:"+empresa+"\n")
+        Viajes.write("Transporte:"+transporte+"\n")
+        Viajes.write("--------------------------------------" + "\n")
+        Viajes.close()
+        messagebox.showinfo(title = "Viaje modificado", message = "El viaje se agregó con exito")
+    else:
+        messagebox.showerror(title = "Error de contenido", message = "Para modificar un viaje debe llenar los espacios")
+
+    
+              
 #_________________________#
 def consultaReservaciones():
     pass
@@ -1104,8 +1363,6 @@ def esconder(ventana):
 
 
 
-
-    
 
 
     
